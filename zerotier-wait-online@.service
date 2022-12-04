@@ -1,0 +1,14 @@
+[Unit]
+Description=Waits for zerotier network %i to become ready
+Conflicts=shutdown.target
+Requires=zerotier-one.service
+After=zerotier-one.service
+Before=zerotier-online.target shutdown.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/zerotier-online-systemd/zerotier-wait-online.sh %i
+RemainAfterExit=yes
+
+[Install]
+WantedBy=zerotier-online@%i.target

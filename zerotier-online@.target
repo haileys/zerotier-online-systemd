@@ -1,0 +1,5 @@
+[Unit]
+Description=waits until zerotier is online
+Wants=zerotier-one.service
+After=zerotier-one.service zerotier-wait-online@%i.service
+Requires=zerotier-wait-online@%i.service

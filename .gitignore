@@ -1,0 +1,4 @@
+# makepkg creates these:
+/pkg
+/src
+*.tar.zst
