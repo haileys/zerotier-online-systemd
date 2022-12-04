@@ -20,7 +20,7 @@ And so we've arrived at the purpose of this package. Setting a dependency on the
 
 Here's an example [mount unit](https://www.freedesktop.org/software/systemd/man/systemd.mount.html) that waits for the ZeroTier network named `cool-network` to come online before attempting to mount the `//fileserver/data` share:
 
-```systemd
+```desktop
 [Unit]
 Description=fileservers:/volume/data
 After=zerotier-online@cool-network.target
