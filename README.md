@@ -12,9 +12,9 @@ The instance name of the template can be either a ZeroTier network id or network
 
 My laptop mounts some CIFS shares on boot, connecting to the file server over ZeroTier.
 
-The mount units must wait for the ZeroTier network to come online before they are started, otherwise they will fail to start during boot and must manually be restarted once logged in.
+The mount units must wait for the ZeroTier network to come online before they are started, otherwise they will fail to start during boot and must be manually restarted once logged in.
 
-Setting a dependency on `network-online.target` is not enough: `network-online.target` is reached when the wireless network comes online, but this is a prerequisite for ZeroTier connecting. It is also not desirable to make `network-online.target` wait for the ZeroTier network to come online as this would unnecessarily delay other units from starting, so it's necessary to split the ZeroTier dependency out into its own target unit.
+Setting a dependency on `network-online.target` is not enough: `network-online.target` is reached as soon as the wireless network comes online, but the wireless network being online is itself a prerequisite for ZeroTier connecting. It is not desirable to make `network-online.target` wait for the ZeroTier network to come online as this would unnecessarily delay other units from starting, so we need to split the ZeroTier network dependency out into its own target unit.
 
 And so we've arrived at the purpose of this package. Setting a dependency on the `zerotier-online@.target` target will wait for the ZeroTier daemon to start and connect to the network we need.
 
