@@ -1,6 +1,8 @@
+# Maintainer: Hailey Somerville <zerotier-online-systemd@hails.org>
 pkgname="zerotier-online-systemd"
 pkgver="0.9"
 pkgrel=1
+pkgdesc="Provides a systemd target that waits for a zerotier network to come online"
 
 arch=("any")
 url="https://github.com/haileys/zerotier-online-systemd"
